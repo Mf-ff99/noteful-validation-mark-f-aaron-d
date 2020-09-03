@@ -8,6 +8,7 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import AddFolder from '../AddFolder/AddFolder'
+import ErrorBoundry from '../ErrorBoundry'
 import './App.css';
 import AddNotes from '../AddNotes/AddNotes'
 
@@ -117,7 +118,9 @@ class App extends Component {
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
+                    <ErrorBoundry>
                     <main className="App__main">{this.renderMainRoutes()}</main>
+                    </ErrorBoundry>
                 </div>
             </ApiContext.Provider>
         );

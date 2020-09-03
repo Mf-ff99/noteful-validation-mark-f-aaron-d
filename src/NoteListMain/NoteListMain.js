@@ -6,6 +6,7 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
+import ErrorBoundry from '../ErrorBoundry'
 
 export default class NoteListMain extends React.Component {
   static defaultProps = {
@@ -22,6 +23,7 @@ export default class NoteListMain extends React.Component {
     return (
       <section className='NoteListMain'>
         <ul>
+        <ErrorBoundry>
           {notesForFolder.map(note =>
             <li key={note.id}>
               <Note
@@ -31,6 +33,7 @@ export default class NoteListMain extends React.Component {
               />
             </li>
           )}
+          </ErrorBoundry>
         </ul>
         <div className='NoteListMain__button-container'>
           <CircleButton
