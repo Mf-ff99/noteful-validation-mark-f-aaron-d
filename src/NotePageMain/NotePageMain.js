@@ -8,6 +8,10 @@ export default class NotePageMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
+    },
+    
+    history: {
+      goBack: () => { }
     }
   }
   static contextType = ApiContext

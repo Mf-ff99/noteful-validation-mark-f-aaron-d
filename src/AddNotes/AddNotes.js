@@ -1,10 +1,16 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import NoteValidation from './NoteValidation'
+import PropTypes from 'prop-types';
 
 export default class AddNotes extends React.Component {
-
-    state = {
+   
+   static defaultProps = {
+        history: {
+            push: ()=> { }
+        }
+    }
+       state = {
         name: '',
         touched: false,
     }
@@ -41,18 +47,18 @@ export default class AddNotes extends React.Component {
 
     }
 
-     updateStateName(e) {
-        this.setState({name: e.target.value})
+    updateStateName(e) {
+        this.setState({ name: e.target.value })
     }
 
     validateName() {
         const name = this.state.name.trim();
-       if(name.length === 0) {
-           return 'name is required'
-       } 
+        if (name.length === 0) {
+            return 'name is required'
+        }
     }
 
-    
+
     render() {
         const { folders = [] } = this.context;
         const nameError = this.validateName
@@ -62,7 +68,7 @@ export default class AddNotes extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Note Name</label>
                     <input type="text" id="noteName" onChange={(e) => this.updateStateName(e)}></input>
-                    {this.validateName() && <NoteValidation message={nameError}/>}
+                    {this.validateName() && <NoteValidation message={nameError} />}
                     <br />
                     <label>Note Content</label>
                     <textarea id="noteContent"></textarea>
@@ -76,9 +82,9 @@ export default class AddNotes extends React.Component {
                     </select>
                     <br />
                     <button type="submit"
-                    disabled={
-                        this.validateName()}
-                        >Add Note
+                        disabled={
+                            this.validateName()}
+                    >Add Note
                         </button>
                 </form>
             </div>
