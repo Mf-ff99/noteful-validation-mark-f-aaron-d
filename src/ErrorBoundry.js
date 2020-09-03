@@ -15,7 +15,7 @@ export default class ErrorBoundry extends React.Component {
     render() {
         if(this.state.hasError) {
         return (
-            <h2>Could not display {this.props}</h2>
+            <h2>Could not display {this.props.selection}</h2>
          )
         }
         return this.props.children

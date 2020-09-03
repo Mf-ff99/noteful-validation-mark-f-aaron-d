@@ -8,7 +8,6 @@ export default class AddFolder extends React.Component {
         name: ''
     }
     
-
     static contextType = ApiContext
 
     handleAddFolderSubmit = (e) => {

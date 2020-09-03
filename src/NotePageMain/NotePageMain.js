@@ -3,6 +3,7 @@ import Note from '../Note/Note'
 import ApiContext from '../ApiContext'
 import { findNote } from '../notes-helpers'
 import './NotePageMain.css'
+import ErrorBoundry from '../ErrorBoundry'
 
 export default class NotePageMain extends React.Component {
   static defaultProps = {
@@ -26,6 +27,7 @@ export default class NotePageMain extends React.Component {
     const note = findNote(notes, noteId) || { content: '' }
     return (
       <section className='NotePageMain'>
+        <ErrorBoundry>
         <Note
           id={note.id}
           name={note.name}
@@ -37,6 +39,7 @@ export default class NotePageMain extends React.Component {
             <p key={i}>{para}</p>
           )}
         </div>
+        </ErrorBoundry>
       </section>
     )
   }

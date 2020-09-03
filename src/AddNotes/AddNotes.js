@@ -1,7 +1,6 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import NoteValidation from './NoteValidation'
-import PropTypes from 'prop-types';
 
 export default class AddNotes extends React.Component {
    
