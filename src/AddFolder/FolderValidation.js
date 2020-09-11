@@ -5,12 +5,13 @@ export default function FolderValidation(props) {
     FolderValidation.defaultProps={
         message: " "
     }
-    FolderValidation.propTypes={
-        message: PropTypes.string
-    }
     if(props.message) {
         return (
             <div className="error">*Folder name must not be empty</div>
         )
     }
+}
+
+FolderValidation.propTypes = {
+    message: PropTypes.func.isRequired
 }

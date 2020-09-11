@@ -1,6 +1,7 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import FolderValidation from './FolderValidation'
+import { PropTypes } from 'prop-types'
 
 export default class AddFolder extends React.Component {
 
@@ -64,4 +65,8 @@ export default class AddFolder extends React.Component {
          </form>
        )
     }
+}
+
+AddFolder.propTypes = {
+    history: PropTypes.object
 }

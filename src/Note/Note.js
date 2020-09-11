@@ -41,11 +41,7 @@ export default class Note extends React.Component {
       })
   };
 
-  propTypes = {
-    name: PropTypes.string,
-    id: PropTypes.string,
-    modifies: PropTypes.bool,
-  }
+  
 
 
   render() {
@@ -79,3 +75,10 @@ export default class Note extends React.Component {
     )
   }
 }
+
+Note.propTypes = {
+    name: PropTypes.string,
+    id: PropTypes.string,
+    modified: PropTypes.string,
+  }
+

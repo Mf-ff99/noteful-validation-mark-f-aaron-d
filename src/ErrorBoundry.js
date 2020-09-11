@@ -1,4 +1,5 @@
 import React from 'react'
+import { PropTypes } from 'prop-types' 
 
 export default class ErrorBoundry extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export default class ErrorBoundry extends React.Component {
         }
     }
 
+
     static getDerivedStateFromError(error) {
         return { hasError: true}
     }
@@ -15,9 +17,13 @@ export default class ErrorBoundry extends React.Component {
     render() {
         if(this.state.hasError) {
         return (
-            <h2>Could not display {this.props.selection}</h2>
+            <h2>Could not display this page</h2>
          )
         }
         return this.props.children
     }
+}
+
+ErrorBoundry.propTypes = {
+        children: PropTypes.array.isRequired
 }

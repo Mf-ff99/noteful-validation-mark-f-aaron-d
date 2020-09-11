@@ -1,6 +1,7 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import NoteValidation from './NoteValidation'
+import { PropTypes } from 'prop-types'
 
 export default class AddNotes extends React.Component {
    
@@ -17,6 +18,7 @@ export default class AddNotes extends React.Component {
     }
 
     static contextType = ApiContext;
+
 
 
     handleSubmit = (e) => {
@@ -116,4 +118,8 @@ export default class AddNotes extends React.Component {
 
     }
 
+}
+
+AddNotes.propTypes = {
+    history: PropTypes.object.isRequired
 }
