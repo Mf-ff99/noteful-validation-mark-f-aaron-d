@@ -11,6 +11,8 @@ export default class AddNotes extends React.Component {
     }
        state = {
         name: '',
+        noteContent: '',
+        noteFolder: '',
         touched: false,
     }
 
@@ -46,14 +48,35 @@ export default class AddNotes extends React.Component {
 
     }
 
-    updateStateName(e) {
-        this.setState({ name: e.target.value })
+    updateStateName = (e) => {
+        this.setState({ 
+            name: e.target.value
+        })
     }
+
+    updateStateContent = (e) => {
+        this.setState({ 
+            noteContent: e.target.value
+        })
+    }
+
+    updateStateFolder = (e) => {
+        this.setState({ 
+            noteFolder: e.target.value
+        })
+    }
+
 
     validateName() {
         const name = this.state.name.trim();
+        const content = this.state.noteContent.trim();
+        const noteFolder = this.state.noteFolder.trim();
         if (name.length === 0) {
             return 'name is required'
+        } else if (content.length === 0) {
+            return 'note content is required'
+        } else if (noteFolder.length === 0) {
+            return 'you must select a folder for your note'
         }
     }
 
@@ -64,16 +87,17 @@ export default class AddNotes extends React.Component {
         return (
             <div className="AddNotes">
                 <h3>Add Note</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}
+                >
                     <label>Note Name</label>
-                    <input type="text" id="noteName" onChange={(e) => this.updateStateName(e)}></input>
+                    <input type="text" id="noteName" onChange={this.updateStateName}></input>
                     {this.validateName() && <NoteValidation message={nameError} />}
                     <br />
                     <label>Note Content</label>
-                    <textarea id="noteContent"></textarea>
+                    <textarea id="noteContent" onChange={this.updateStateContent}></textarea>
                     <br />
                     <label>Select a folder</label>
-                    <select id="noteFolderSelection">
+                    <select id="noteFolderSelection" onChange={this.updateStateFolder}>
                         <option value={null}>...</option>
                         {folders.map(folder =>
                             <option key={folder.id} value={folder.id}>{folder.name}</option>

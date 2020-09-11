@@ -10,7 +10,7 @@ export default function FolderValidation(props) {
     }
     if(props.message) {
         return (
-            <div classname="error">*Folder name must not be empty</div>
+            <div className="error">*Folder name must not be empty</div>
         )
     }
 }
